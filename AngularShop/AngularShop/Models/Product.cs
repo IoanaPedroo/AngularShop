@@ -18,7 +18,8 @@ namespace AngularShop.Models
         public double Rating { get; set; }
         public int Stock { get; set; }
         public string Brand { get; set; }
-        public string Category { get; set; }
+        
+        public Category Category { get; set; }
         public string Thumbnail { get; set; }
         public List<string> Images { get; set; }
     }
