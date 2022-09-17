@@ -1,4 +1,6 @@
 using AngularShop.Models.InitDatabase;
+using AngularShop.Repositories;
+using AngularShop.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=AngularShopDb;Trusted_Connection=True;"));
-
+builder.Services.AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 
@@ -18,6 +21,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

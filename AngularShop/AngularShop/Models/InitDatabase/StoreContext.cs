@@ -4,7 +4,7 @@ namespace AngularShop.Models.InitDatabase
 {
     public class StoreContext : DbContext
     {
-        DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
