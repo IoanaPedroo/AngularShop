@@ -1,8 +1,13 @@
+using AngularShop.Models.InitDatabase;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=AngularShopDb;Trusted_Connection=True;"));
+
 
 var app = builder.Build();
 
